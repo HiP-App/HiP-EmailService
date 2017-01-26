@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace EmailService.Utility
 {
@@ -29,6 +25,7 @@ namespace EmailService.Utility
         public string From { get; set; }
         public string Server { get; set; }
         public int Port { get; set; }
+        // ReSharper disable once InconsistentNaming
         public bool WithSSL { get; set; }
         public string User { get; set; }
         public string Password { get; set; }

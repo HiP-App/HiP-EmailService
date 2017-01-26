@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using EmailService.Utility;
 using MailKit.Net.Smtp;
 using MimeKit;
 using EmailService.Model;
+using System.IO;
 
 namespace EmailService.Services
 {
     public class EmailSender
     {
+        private static string TemplateDir { get; } = "Templates";
+        private static string InvitationTemplate { get; } = Path.Combine(TemplateDir, "invation-email.html");
+        private static string NotificationTemplate { get; } = Path.Combine(TemplateDir, "notification-email.html");
+
         private readonly EmailConfig _emailConfig;
 
         public EmailSender(EmailConfig emailConfig)
@@ -19,7 +20,12 @@ namespace EmailService.Services
             _emailConfig = emailConfig;
         }
 
-        public Task SendMail(EmailModel mail)
+        private void SendMail(string recipient, string subject, string content)
+        {
+            SendMail(new EmailModel() { Recipient = recipient, Content = content, Subject = subject });
+        }
+
+        public void SendMail(EmailModel mail)
         {
             var smtp = _emailConfig.SmtpConfig;
 
@@ -36,7 +42,6 @@ namespace EmailService.Services
             {
                 // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-
                 client.Connect(smtp.Server, smtp.Port, smtp.WithSSL);
 
                 // Note: since we don't have an OAuth2 token, disable
@@ -45,17 +50,29 @@ namespace EmailService.Services
 
                 // Note: only needed if the SMTP server requires authentication
                 if (!string.IsNullOrEmpty(smtp.Password))
-                {
                     client.Authenticate(smtp.User, smtp.Password);
-                }
 
                 client.Send(message);
                 client.Disconnect(true);
             }
+        }
+        public void Invite(InvitationModel invitationModel)
+        {
+            var bodyHtml = File.ReadAllText(InvitationTemplate);
+            bodyHtml = bodyHtml.Replace(@"{email}", invitationModel.Recipient);
 
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            SendMail(invitationModel.Recipient, invitationModel.Subject, bodyHtml);
         }
 
+        public void Notify(NotificationModel notification)
+        {
+            var bodyHtml = File.ReadAllText(NotificationTemplate);
+            bodyHtml = bodyHtml.Replace(@"{Topic}", notification.Topic);
+            bodyHtml = bodyHtml.Replace(@"{Updater}", notification.Updater);
+            bodyHtml = bodyHtml.Replace(@"{Date}", notification.Date.ToString(CultureInfo.InvariantCulture));
+            bodyHtml = bodyHtml.Replace(@"{Action}", notification.Action);
+
+            SendMail(notification.Recipient, notification.Subject, bodyHtml);
+        }
     }
 }

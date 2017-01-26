@@ -49,7 +49,8 @@ namespace EmailService
                     Description = "A Email Service to serve History in Paderborn CMS System"
                 });
                 //Set the comments path for the swagger json and ui.
-                options.IncludeXmlComments(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "EmailService.xml"));
+                options.IncludeXmlComments(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath,
+                    "EmailService.xml"));
             });
 
         }
@@ -69,10 +70,15 @@ namespace EmailService
 
         public static void Main(string[] args)
         {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
 
