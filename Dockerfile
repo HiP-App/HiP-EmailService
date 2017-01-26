@@ -9,5 +9,5 @@ RUN dotnet restore
 
 EXPOSE 5002
 
-WORKDIR /dotnetapp/Email
+WORKDIR /dotnetapp/EmailService
 ENTRYPOINT ["dotnet", "run", "-p", "project.json"]
