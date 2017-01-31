@@ -18,6 +18,13 @@ namespace EmailService.Controllers
             _logger = loggerFactory.CreateLogger<EmailController>();
         }
 
+        /// <summary>
+        /// Send a email defined in the EmailModel.
+        /// </summary>
+        /// <param name="email">EmailModel to send</param>
+        /// <response code="202">Email was send</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="503">Service Unavailable</response>
         [HttpPost]
         [ProducesResponseType(typeof(void), 202)]
         [ProducesResponseType(typeof(void), 400)]
@@ -40,6 +47,13 @@ namespace EmailService.Controllers
             return Accepted();
         }
 
+        /// <summary>
+        /// Send a Notification.
+        /// </summary>
+        /// <param name="notificationModel">Notification to send</param>
+        /// <response code="202">Email was send</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="503">Service Unavailable</response>
         [HttpPost("Notification")]
         [ProducesResponseType(typeof(void), 202)]
         [ProducesResponseType(typeof(void), 400)]
@@ -62,6 +76,13 @@ namespace EmailService.Controllers
             return Accepted();
         }
 
+        /// <summary>
+        /// Send a Invitation defined in the InvitationModel.
+        /// </summary>
+        /// <param name="invitation">Invitation to send</param>
+        /// <response code="202">Email was send</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="503">Service Unavailable</response>
         [HttpPost("Invitation")]
         [ProducesResponseType(typeof(void), 202)]
         [ProducesResponseType(typeof(void), 400)]
