@@ -7,7 +7,7 @@ using System.IO;
 using EmailService.Services;
 using EmailService.Utility;
 using Microsoft.Extensions.PlatformAbstractions;
-using Swashbuckle.Swagger.Model;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace EmailService
 {
@@ -37,20 +37,11 @@ namespace EmailService
             services.AddMvc();
 
             // Add Swagger service
-            services.AddSwaggerGen();
-
-            // Configurig Metadata in Swagger
-            services.ConfigureSwaggerGen(options =>
+            services.AddSwaggerGen(c =>
             {
-                options.SingleApiVersion(new Info
-                {
-                    Version = "v1",
-                    Title = "HiP EmailService",
-                    Description = "A Email Service to serve History in Paderborn CMS System"
-                });
-                //Set the comments path for the swagger json and ui.
-                options.IncludeXmlComments(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath,
-                    "EmailService.xml"));
+                c.SwaggerDoc("v1", new Info() { Title = "HiP EmailService", Version = "v1", Description = "A Email Service to serve History in Paderborn CMS System" });
+
+                c.IncludeXmlComments(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "EmailService.xml"));
             });
 
         }
@@ -64,8 +55,15 @@ namespace EmailService
 
             app.UseMvc();
 
-            app.UseSwagger();
-            app.UseSwaggerUi();
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger(c =>
+            {
+                c.PreSerializeFilters.Add((swaggerDoc, httpReq) => swaggerDoc.Host = httpReq.Host.Value);
+            });
+            app.UseSwaggerUi(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HiP EmailService");
+            });
         }
 
 
