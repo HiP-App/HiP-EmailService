@@ -67,10 +67,10 @@ namespace EmailService.Services
         public void Notify(NotificationModel notification)
         {
             var bodyHtml = File.ReadAllText(NotificationTemplate);
-            bodyHtml = bodyHtml.Replace(@"{Topic}", notification.Topic);
-            bodyHtml = bodyHtml.Replace(@"{Updater}", notification.Updater);
-            bodyHtml = bodyHtml.Replace(@"{Date}", notification.Date.ToString(CultureInfo.InvariantCulture));
-            bodyHtml = bodyHtml.Replace(@"{Action}", notification.Action);
+            bodyHtml = bodyHtml.Replace(@"{topic}", notification.Topic);
+            bodyHtml = bodyHtml.Replace(@"{updater}", notification.Updater);
+            bodyHtml = bodyHtml.Replace(@"{date}", notification.Date.ToString(CultureInfo.InvariantCulture));
+            bodyHtml = bodyHtml.Replace(@"{action}", notification.Action);
 
             SendMail(notification.Recipient, notification.Subject, bodyHtml);
         }
