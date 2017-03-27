@@ -47,9 +47,6 @@ For getting the project to run with Visual Studio Code, you will have to execute
 
  * You can [fork](https://help.github.com/articles/fork-a-repo/) or [clone](https://help.github.com/articles/cloning-a-repository/) our repo.
    * To submit patches you should fork and then [create a Pull Request](https://help.github.com/articles/using-pull-requests/)
-   * If you are part of the project group, you can create new branches on the main repo as described [in our internal
-     Confluence](https://atlassian-hip.cs.uni-paderborn.de/confluence/display/DCS/Conventions+for+git)
-
 
 ## How to submit Defects and Feature Proposals
 
@@ -57,8 +54,7 @@ Please write an email to [hip-app@campus.upb.de](mailto:hip-app@campus.upb.de).
 
 ## Documentation
 
-Documentation is currently collected in our [internal Confluence](https://atlassian-hip.cs.upb.de/confluence/). If something is missing in 
-this README, just [send an email](mailto:hip-app@campus.upb.de).
+If something is missing in this README, just [send an email](mailto:hip-app@campus.upb.de).
 
 
 ## Contact
