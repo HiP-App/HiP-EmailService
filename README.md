@@ -15,7 +15,7 @@ HiP-EmailService is a REST API built on .NET Core 1.1 . Below are the requiremen
  * [.NET Core](https://www.microsoft.com/net/core#windows) for Windows, Linux or macOS.
  
 ## IDE Options
- * Visual Studio 2015 with Update 3 and [NuGet Package Manager](https://www.nuget.org/). 
+ * Visual Studio 2017
  * Visual Studio Code with [C# extention](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
 ## Getting started
@@ -48,7 +48,7 @@ For getting the project to run with Visual Studio Code, you will have to execute
  * You can [fork](https://help.github.com/articles/fork-a-repo/) or [clone](https://help.github.com/articles/cloning-a-repository/) our repo.
    * To submit patches you should fork and then [create a Pull Request](https://help.github.com/articles/using-pull-requests/)
    * If you are part of the project group, you can create new branches on the main repo as described [in our internal
-     Confluence](http://atlassian-hip.cs.upb.de:8090/display/DCS/Conventions+for+git)
+     Confluence](https://atlassian-hip.cs.uni-paderborn.de/confluence/display/DCS/Conventions+for+git)
 
 
 ## How to submit Defects and Feature Proposals
