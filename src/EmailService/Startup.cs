@@ -17,7 +17,7 @@ namespace EmailService
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -60,7 +60,7 @@ namespace EmailService
             {
                 c.PreSerializeFilters.Add((swaggerDoc, httpReq) => swaggerDoc.Host = httpReq.Host.Value);
             });
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUi(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "HiP EmailService");
             });
@@ -75,10 +75,9 @@ namespace EmailService
                 .Build();
 
             var host = new WebHostBuilder()
+                .UseKestrel()
                 .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseKestrel()
-                .UseUrls("http://0.0.0.0:5002")
                 .UseStartup<Startup>()
                 .Build();
 
