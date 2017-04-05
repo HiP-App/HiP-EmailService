@@ -1,9 +1,9 @@
-﻿using EmailService.Model;
-using EmailService.Services;
+using PaderbornUniversity.SILab.Hip.EmailService.Model;
+using PaderbornUniversity.SILab.Hip.EmailService.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace EmailService.Controllers
+namespace PaderbornUniversity.SILab.Hip.EmailService.Controllers
 {
     [Produces("application/json")]
     [Route("Email")]

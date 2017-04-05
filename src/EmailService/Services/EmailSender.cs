@@ -1,11 +1,11 @@
-﻿using System.Globalization;
-using EmailService.Utility;
+using System.Globalization;
+using PaderbornUniversity.SILab.Hip.EmailService.Utility;
 using MailKit.Net.Smtp;
 using MimeKit;
-using EmailService.Model;
+using PaderbornUniversity.SILab.Hip.EmailService.Model;
 using System.IO;
 
-namespace EmailService.Services
+namespace PaderbornUniversity.SILab.Hip.EmailService.Services
 {
     public class EmailSender
     {

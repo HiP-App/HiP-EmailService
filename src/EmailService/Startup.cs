@@ -4,12 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
-using EmailService.Services;
-using EmailService.Utility;
+using PaderbornUniversity.SILab.Hip.EmailService.Services;
+using PaderbornUniversity.SILab.Hip.EmailService.Utility;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace EmailService
+namespace PaderbornUniversity.SILab.Hip.EmailService
 {
     public class Startup
     {

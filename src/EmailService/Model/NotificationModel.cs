@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
-namespace EmailService.Model
+namespace PaderbornUniversity.SILab.Hip.EmailService.Model
 {
     public class NotificationModel
     {

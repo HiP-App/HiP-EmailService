@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EmailService.Model
+namespace PaderbornUniversity.SILab.Hip.EmailService.Model
 {
     public class InvitationModel
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace EmailService.Utility
+namespace PaderbornUniversity.SILab.Hip.EmailService.Utility
 {
     public class EmailConfig
     {

@@ -10,6 +10,7 @@
     <PackageId>EmailService</PackageId>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <RootNamespace>PaderbornUniversity.SILab.Hip.EmailService</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
