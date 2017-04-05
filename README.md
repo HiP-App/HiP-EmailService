@@ -52,11 +52,6 @@ For getting the project to run with Visual Studio Code, you will have to execute
 
 Please write an email to [hip-app@campus.upb.de](mailto:hip-app@campus.upb.de).
 
-## Documentation
-
-If something is missing in this README, just [send an email](mailto:hip-app@campus.upb.de).
-
-
 ## Contact
 
 > HiP (History in Paderborn) ist eine Plattform der:
