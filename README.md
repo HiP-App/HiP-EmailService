@@ -14,6 +14,19 @@ for a list of code contributions.
 HiP-EmailService is a REST API built on .NET Core 1.1 . Below are the requirements needed to build and develop this project,
  * [.NET Core](https://www.microsoft.com/net/core#windows) for Windows, Linux or macOS.
  
+## Using this API in another .NET application
+
+If you want to call this API programatically from another .NET application, the recommended way is generating a client class automatically via [autorest](https://github.com/Azure/autorest).
+
+1. Install the autorest tool
+2. Run the EmailService and then download the swagger.json from localhost:5002/swagger/v1/swagger.json and save it to your project directory
+3. Create the client by running the following command (change the `YOUR_PROJECT_NAME` string, obviously)
+``` bash
+autorest -Input swagger.json -CodeGenerator CSharp -OutputDirectory . -Namespace PaderbornUniversity.SILab.Hip.YOUR_PROJECT_NAME -ClientName EmailClient
+```
+4. Move the generated `EmailClient.cs`, `IEmailClient.cs` and `EmailClientExtensions.cs` into a newly created folder `Clients` and change their `namespace` declarations by adding `.Clients` to their end
+5. You can now instantiate the `EmailClient` via `new EmailClient()` and then call the REST API methods of the EmailService using it's async methods.
+ 
 ## IDE Options
  * Visual Studio 2017
  * Visual Studio Code with [C# extention](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
